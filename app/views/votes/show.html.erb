@@ -1,0 +1,23 @@
+<p>
+  <b>Yea:</b>
+  <%=h @vote.yea %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%=h @vote.target_id %>
+</p>
+
+<p>
+  <b>Target type:</b>
+  <%=h @vote.target_type %>
+</p>
+
+<p>
+  <b>Citizen:</b>
+  <%=h @vote.citizen_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>

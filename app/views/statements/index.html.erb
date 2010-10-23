@@ -1,0 +1,24 @@
+<h1>Listing statements</h1>
+
+<table>
+  <tr>
+    <th>Body</th>
+    <th>Target type</th>
+    <th>Target</th>
+  </tr>
+
+<% @statements.each do |statement| %>
+  <tr>
+    <td><%=h statement.body %></td>
+    <td><%=h statement.target_type %></td>
+    <td><%=h statement.target_id %></td>
+    <td><%= link_to 'Show', statement %></td>
+    <td><%= link_to 'Edit', edit_statement_path(statement) %></td>
+    <td><%= link_to 'Destroy', statement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New statement', new_statement_path %>

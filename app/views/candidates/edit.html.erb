@@ -1,0 +1,20 @@
+<h1>Editing candidate</h1>
+
+<% form_for(@candidate) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :citizen_id %><br />
+    <%= f.text_field :citizen_id %>
+  </p>
+  <p>
+    <%= f.label :constituency_id %><br />
+    <%= f.text_field :constituency_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @candidate %> |
+<%= link_to 'Back', candidates_path %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Body:</b>
+  <%=h @statement.body %>
+</p>
+
+<p>
+  <b>Target type:</b>
+  <%=h @statement.target_type %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%=h @statement.target_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_statement_path(@statement) %> |
+<%= link_to 'Back', statements_path %>

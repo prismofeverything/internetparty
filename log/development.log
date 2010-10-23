@@ -1,0 +1,58 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (395.1ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (8.2ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateCandidates (20101023224146)
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE `candidates` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `citizen_id` int(11), `constituency_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023224146')[0m
+Migrating to CreateConstituencies (20101023224423)
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `constituencies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `parent_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023224423')[0m
+Migrating to CreateIssues (20101023224708)
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE `issues` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `body` text, `constituency_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023224708')[0m
+Migrating to CreateStatements (20101023225446)
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE `statements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `body` text, `target_type` varchar(255), `target_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023225446')[0m
+Migrating to CreateVotes (20101023230046)
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCREATE TABLE `votes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `yea` tinyint(1), `target_id` int(11), `target_type` varchar(255), `citizen_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023230046')[0m
+Migrating to CreateCitizens (20101023230638)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `citizens` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime, `bio` text, `street` varchar(255), `postal` varchar(255), `region` varchar(255), `country` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.4ms)[0m   [0;1mCREATE UNIQUE INDEX `index_citizens_on_login` ON `citizens` (`login`)[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023230638')[0m
+Migrating to CreateMemberships (20101023231334)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `memberships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `citizen_id` int(11), `constituency_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101023231334')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `candidates`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `candidates`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW KEYS FROM `candidates`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `citizens`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `citizens`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `citizens`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `constituencies`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `constituencies`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `constituencies`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `issues`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `issues`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `issues`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `memberships`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `memberships`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `memberships`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `statements`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `statements`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `statements`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `votes`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `votes`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `votes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mConstituency Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `constituencies`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mCitizen Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `citizens`[0m
