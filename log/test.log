@@ -560,3 +560,74 @@
   [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
   [4;36;1mMembership Destroy (0.1ms)[0m   [0;1mDELETE FROM `memberships` WHERE `id` = 16[0m
   [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mCitizen Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `citizens`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCitizen Exists (0.2ms)[0m   [0mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`login` = BINARY 'yellow') LIMIT 1[0m
+  [4;36;1mCitizen Exists (0.1ms)[0m   [0;1mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`email` = BINARY 'yellow@yellow.com') LIMIT 1[0m
+  [4;35;1mCitizen Create (0.3ms)[0m   [0mINSERT INTO `citizens` (`name`, `salt`, `region`, `created_at`, `crypted_password`, `remember_token_expires_at`, `postal`, `country`, `updated_at`, `street`, `remember_token`, `bio`, `login`, `email`) VALUES('Yellow Vortex', 'a0b5cfb871dff3384209f47011263cf6c7b7cf09', NULL, '2010-10-24 02:02:54', '02bee99d0319662029351a23c5fdea737d380c44', NULL, NULL, NULL, '2010-10-24 02:02:54', NULL, NULL, NULL, 'yellow', 'yellow@yellow.com')[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCitizen Exists (0.2ms)[0m   [0;1mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`login` = BINARY 'green') LIMIT 1[0m
+  [4;35;1mCitizen Exists (0.1ms)[0m   [0mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`email` = BINARY 'green@green.com') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCitizen Exists (0.1ms)[0m   [0;1mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`login` = BINARY 'purple') LIMIT 1[0m
+  [4;35;1mCitizen Exists (0.1ms)[0m   [0mSELECT `citizens`.id FROM `citizens` WHERE (`citizens`.`email` = BINARY 'purple@purple.com') LIMIT 1[0m
+  [4;36;1mCitizen Create (0.2ms)[0m   [0;1mINSERT INTO `citizens` (`name`, `salt`, `region`, `created_at`, `crypted_password`, `remember_token_expires_at`, `postal`, `country`, `updated_at`, `street`, `remember_token`, `bio`, `login`, `email`) VALUES('Purple Vortex', '9ec8f0e9c2bc3eb51d4dc25d4af5c91015fc9ecc', NULL, '2010-10-24 02:02:54', '218ab38d0ab1e0be98d559568914f21af29c9fa7', NULL, NULL, NULL, '2010-10-24 02:02:54', NULL, NULL, NULL, 'purple', 'purple@purple.com')[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mConstituency Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `constituencies`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mConstituency Create (0.2ms)[0m   [0;1mINSERT INTO `constituencies` (`name`, `created_at`, `updated_at`, `parent_id`) VALUES('Rome', '2010-10-24 02:02:54', '2010-10-24 02:02:54', NULL)[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mConstituency Create (0.1ms)[0m   [0mINSERT INTO `constituencies` (`name`, `created_at`, `updated_at`, `parent_id`) VALUES('Partha', '2010-10-24 02:02:54', '2010-10-24 02:02:54', NULL)[0m
+  [4;36;1mSQL (22.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mIssue Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `issues`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mIssue Create (0.2ms)[0m   [0mINSERT INTO `issues` (`name`, `constituency_id`, `created_at`, `body`, `updated_at`) VALUES('Work', NULL, '2010-10-24 02:02:54', 'work is hard', '2010-10-24 02:02:54')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mIssue Create (0.3ms)[0m   [0;1mINSERT INTO `issues` (`name`, `constituency_id`, `created_at`, `body`, `updated_at`) VALUES('Love', NULL, '2010-10-24 02:02:54', 'love is painful', '2010-10-24 02:02:54')[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMembership Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `memberships`[0m
+  [4;36;1mMembership Create (0.2ms)[0m   [0;1mINSERT INTO `memberships` (`constituency_id`, `created_at`, `updated_at`, `citizen_id`) VALUES(9, '2010-10-24 02:02:54', '2010-10-24 02:02:54', 9)[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMembership Create (0.2ms)[0m   [0mINSERT INTO `memberships` (`constituency_id`, `created_at`, `updated_at`, `citizen_id`) VALUES(10, '2010-10-24 02:02:54', '2010-10-24 02:02:54', 10)[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mCitizen Destroy (0.2ms)[0m   [0;1mDELETE FROM `citizens` WHERE `id` = 9[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mCitizen Destroy (0.2ms)[0m   [0mDELETE FROM `citizens` WHERE `id` = 10[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mConstituency Destroy (0.2ms)[0m   [0;1mDELETE FROM `constituencies` WHERE `id` = 9[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mConstituency Destroy (0.2ms)[0m   [0mDELETE FROM `constituencies` WHERE `id` = 10[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mIssue Destroy (0.2ms)[0m   [0;1mDELETE FROM `issues` WHERE `id` = 9[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mIssue Destroy (0.2ms)[0m   [0mDELETE FROM `issues` WHERE `id` = 10[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mConstituency Load (0.2ms)[0m   [0mSELECT `constituencies`.* FROM `constituencies` INNER JOIN `memberships` ON `constituencies`.id = `memberships`.constituency_id WHERE ((`memberships`.citizen_id = 9)) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mConstituency Load (0.2ms)[0m   [0;1mSELECT `constituencies`.* FROM `constituencies` INNER JOIN `memberships` ON `constituencies`.id = `memberships`.constituency_id WHERE ((`memberships`.citizen_id = 10)) [0m

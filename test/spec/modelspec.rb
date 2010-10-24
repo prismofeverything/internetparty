@@ -19,10 +19,12 @@ describe Citizen do
 
     @issues = [@work, @love]
 
-    @memberships = [[@yellow, @rome], [@green, @rome], [@green, @partha], [@purple, @partha]].map do |pair|
+    [[@yellow, @rome], [@green, @rome], [@green, @partha], [@purple, @partha]].map do |pair|
       citizen, constituency = pair
-      Membership.create(:citizen_id => citizen.id, :constituency_id => constituency.id)
+      citizen.constituencies << constituency
     end
+
+    @memberships = Membership.all
   end
 
   it 'should work' do 
