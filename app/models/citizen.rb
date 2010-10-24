@@ -19,7 +19,7 @@ class Citizen < ActiveRecord::Base
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
   has_many :memberships
-  has_many :constituencies, :through => :membership
+  has_many :constituencies, :through => :memberships
   has_many :statements
   has_many :candidates
 
@@ -48,5 +48,4 @@ class Citizen < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  
 end
