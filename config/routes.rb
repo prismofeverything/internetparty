@@ -1,8 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'citizens', :action => 'create'
   map.signup '/signup', :controller => 'citizens', :action => 'new'
+  map.settings '/settings', :controller => 'citizens', :action => 'settings'
+  map.root :controller => 'citizens', :action => 'home'
   map.resources :citizens
 
   map.resource :session

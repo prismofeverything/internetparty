@@ -2,9 +2,9 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development: 
   adapter: mysql
-  database: internetparty_development
+  database: internetparty
   username: root
-  password: 1nt3rfac3
+  password: 
   socket: /tmp/mysql.sock
   host: localhost
 
@@ -14,16 +14,16 @@ development:
 
 test:
   adapter: mysql
-  database: internetparty_test
+  database: internetparty
   username: root
-  password: 1nt3rfac3
+  password: 
   socket: /tmp/mysql.sock  
   host: localhost
 
 production:
   adapter: mysql
-  database: internetparty_development
+  database: internetparty
   username: root
-  password: 1nt3rfac3
+  password: 
   socket: /tmp/mysql.sock
   host: localhost

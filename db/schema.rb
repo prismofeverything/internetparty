@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101023231334) do
+ActiveRecord::Schema.define(:version => 20101205093053) do
 
   create_table "candidates", :force => true do |t|
     t.integer  "citizen_id"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20101023231334) do
 
   create_table "citizens", :force => true do |t|
     t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100, :default => ""
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
@@ -31,8 +30,11 @@ ActiveRecord::Schema.define(:version => 20101023231334) do
     t.text     "bio"
     t.string   "street"
     t.string   "postal"
-    t.string   "region"
-    t.string   "country"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_2"
+    t.integer  "region_id"
+    t.integer  "country_id"
   end
 
   add_index "citizens", ["login"], :name => "index_citizens_on_login", :unique => true
@@ -42,6 +44,21 @@ ActiveRecord::Schema.define(:version => 20101023231334) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "counties", :force => true do |t|
+    t.string   "name"
+    t.integer  "region_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string  "iso"
+    t.string  "name"
+    t.string  "printable_name"
+    t.string  "iso3"
+    t.integer "numcode"
   end
 
   create_table "issues", :force => true do |t|
@@ -57,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20101023231334) do
     t.integer  "constituency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "country_id"
+    t.string   "name"
   end
 
   create_table "statements", :force => true do |t|
