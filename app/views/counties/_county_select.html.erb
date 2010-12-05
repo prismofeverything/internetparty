@@ -1,0 +1,9 @@
+<% debugger %>
+<% if !@region.counties.empty? %>
+  <%= label :county, 'Region' %>
+  <%= select_tag :county, options_for_select(@region.counties.collect{|county| [county.name, county.id]}.unshift(["Not Listed", 0]).uniq) %><br />
+  (Not seeing your Province/State <%= text_field_tag :county_named %>)
+<% else %>
+  <%= label :county, 'County' %><br/>
+  <%= text_field_tag :county_named %>
+<% end %>

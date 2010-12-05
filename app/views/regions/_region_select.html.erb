@@ -1,0 +1,14 @@
+<% if !@country.regions.empty? %>
+  <%= label :region, 'Region' %>
+  <%= select_tag :region, options_for_select(@country.regions.collect{|region| [region.name, region.id]}.unshift(["Not Listed", 0]).uniq) %><br />
+  (Not seeing your Province/State? <%= text_field_tag :region_named %>)
+<% else %>
+  <%= label :region, 'Region' %><br/>
+  <%= text_field_tag :region_named %>
+<% end %>
+<%= observe_field :region, :url => { :action => :county_select },
+     :frequency => 0.25,
+     :update => :counties,
+     :with => 'id'
+     %>
+<div id="counties"></div>
