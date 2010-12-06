@@ -1,1 +1,7 @@
-blah
+<% if @citizen.constituencies.empty? %>
+  You are currently not a part of any constituencies. <%= link_to "Add one?", new_constituency_url %>
+<% else %>
+  <% for constituency in @citizen.constituencies %>
+  blah
+  <% end %>
+<% end %>

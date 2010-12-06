@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205093053) do
+ActiveRecord::Schema.define(:version => 20101206035009) do
 
   create_table "candidates", :force => true do |t|
     t.integer  "citizen_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20101205093053) do
     t.string   "street_2"
     t.integer  "region_id"
     t.integer  "country_id"
+    t.integer  "county_id"
   end
 
   add_index "citizens", ["login"], :name => "index_citizens_on_login", :unique => true

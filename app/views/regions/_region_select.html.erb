@@ -1,14 +1,26 @@
-<% if !@country.regions.empty? %>
+<div id="citizen-main-constituencies-region">
+<% @country = @country || country %>
+<% @citizen = current_citizen %>
+<%= observe_field :citizen_country_id, :url => { :action => :region_select },
+     :frequency => 1,
+     :update => :regions,
+     :with => 'id'
+     %>
+<% if !@country.nil? %>
+  <% if !@country.regions.empty? %>
   <%= label :region, 'Region' %>
-  <%= select_tag :region, options_for_select(@country.regions.collect{|region| [region.name, region.id]}.unshift(["Not Listed", 0]).uniq) %><br />
+  <% region_value = !@citizen.region.nil?  ? [@citizen.region.name, @citizen.region.id] : ["Not Listed", 0] %>
+  <%= select_tag :region, options_for_select(@country.regions.collect{|region| [region.name, region.id]}.unshift(["Not Listed", 0]).uniq, @citizen.region_id || 0) %><br />
   (Not seeing your Province/State? <%= text_field_tag :region_named %>)
 <% else %>
   <%= label :region, 'Region' %><br/>
   <%= text_field_tag :region_named %>
 <% end %>
 <%= observe_field :region, :url => { :action => :county_select },
-     :frequency => 0.25,
+     :frequency => 1,
      :update => :counties,
      :with => 'id'
      %>
-<div id="counties"></div>
+<%= render :partial => "/counties/county_select", :locals => {:region => @citizen.region}%>
+<% end %>
+</div>

@@ -4,7 +4,7 @@
   <div id="citizen-bar-constituencies"><%= link_to "Constituencies" %></div>
   <div id="citizen-bar-action"  >(<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)</div>
 <% else -%>
-  <div id="citizen-bar-greeting"><%= link_to_login_with_IP 'Not logged in', :style => 'border: none;' %></div>
+  <!-- <div id="citizen-bar-greeting"><%= link_to_login_with_IP 'Not logged in', :style => 'border: none;' %></div> -->
   <div id="citizen-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %></div>
   <div id="citizen-bar-about"><%= link_to "About" %></div>
 <% end -%>
